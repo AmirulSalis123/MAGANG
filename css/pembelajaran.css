@@ -1,0 +1,607 @@
+/* pembelajaran.css - STYLING KOMPONEN SISTEM PEMBELAJARAN */
+
+/* Base Styles */
+.pembelajaran-content {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .pembelajaran-content {
+    padding: 15px;
+  }
+}
+
+/* Header Section */
+.header-section {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 40px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.header-section h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 0 15px 0;
+  color: white;
+  position: relative;
+  z-index: 2;
+}
+
+.header-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 2;
+}
+
+.divider-line {
+  height: 3px;
+  background: #ffd166;
+  flex: 1;
+  max-width: 100px;
+}
+
+.header-section .fa-graduation-cap {
+  font-size: 2rem;
+  color: #ffd166;
+}
+
+.header-section p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin: 0;
+  font-weight: 300;
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+/* Mobile Header */
+@media (max-width: 768px) {
+  .header-section {
+    margin-bottom: 30px;
+    padding: 25px 20px;
+  }
+  
+  .header-section h1 {
+    font-size: 1.8rem;
+  }
+  
+  .header-section .fa-graduation-cap {
+    font-size: 1.5rem;
+  }
+  
+  .header-section p {
+    font-size: 1rem;
+  }
+}
+
+/* Tab Navigation */
+.tab-navigation {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  overflow-x: auto;
+}
+
+.tab-container {
+  display: flex;
+  gap: 10px;
+  min-width: min-content;
+}
+
+.tab-button {
+  background: white;
+  color: #1e3c72;
+  border: 2px solid #e9ecef;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.tab-button:hover {
+  background: #f8f9fa;
+  border-color: #1e3c72;
+}
+
+.tab-button.active {
+  background: #1e3c72;
+  color: white;
+  border-color: #1e3c72;
+}
+
+/* Card Styles */
+.curriculum-card,
+.subject-card,
+.method-card,
+.schedule-card,
+.facility-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.subject-card,
+.method-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.subject-card:hover,
+.method-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* Subject Card */
+.subject-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.subject-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.subject-info h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1e3c72;
+  margin: 0 0 5px 0;
+}
+
+.subject-info p {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+}
+
+.subject-description {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0 0 15px 0;
+  flex: 1;
+}
+
+/* Method Card */
+.method-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.method-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  margin: 0 auto 15px;
+}
+
+.method-header h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1e3c72;
+  margin: 0 0 10px 0;
+}
+
+.method-description {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0 0 15px 0;
+  flex: 1;
+}
+
+.method-benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.benefit-tag {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+/* Detail Button */
+.detail-button {
+  background: transparent;
+  color: #1e3c72;
+  border: 2px solid #1e3c72;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.detail-button:hover {
+  background: #1e3c72;
+  color: white;
+}
+
+/* Grid Layouts */
+.curriculum-grid,
+.methods-grid,
+.subjects-grid,
+.schedule-grid,
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+/* Mobile Grid Layouts */
+@media (max-width: 768px) {
+  .curriculum-grid,
+  .methods-grid,
+  .subjects-grid,
+  .schedule-grid,
+  .facilities-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Curriculum Styles */
+.curriculum-card h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e3c72;
+  margin: 0 0 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.curriculum-card p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 25px 0;
+}
+
+.curriculum-grid h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1e3c72;
+  margin: 0 0 15px 0;
+}
+
+.curriculum-grid ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #666;
+}
+
+.curriculum-grid li {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Schedule Styles */
+.schedule-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e3c72;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.days-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.day-schedule {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.day-schedule h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e3c72;
+  margin: 0 0 10px 0;
+}
+
+.subjects-grid-small {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.subject-tag {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Facility Styles */
+.facility-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.facility-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.facility-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1e3c72;
+  margin: 0 0 8px 0;
+}
+
+.facility-card p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 40px;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: auto;
+  position: relative;
+}
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-bottom: 1px solid #e9ecef;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  border-radius: 12px 12px 0 0;
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.modal-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.modal-title h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.modal-title p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.modal-close {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 30px;
+}
+
+.modal-section {
+  margin-bottom: 25px;
+}
+
+.modal-section h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e3c72;
+  margin: 0 0 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-section p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.modal-section ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #666;
+}
+
+.modal-section li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Activities and Examples Grid */
+.activities-grid,
+.examples-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.activity-item {
+  background: #f8f9fa;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.example-item {
+  background: #e3f2fd;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #1976d2;
+  font-weight: 500;
+  text-align: center;
+}
+
+.assessment-info {
+  background: #e8f5e8;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* Mobile Modal */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 20px;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .modal-title h2 {
+    font-size: 1.3rem;
+  }
+  
+  .activities-grid,
+  .examples-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tab Content */
+.tab-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e3c72;
+  margin: 0 0 20px 0;
+}

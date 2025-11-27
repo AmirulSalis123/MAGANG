@@ -1,0 +1,560 @@
+/* === STYLE UNTUK KOMPONEN FOTO CONTENT === */
+
+/* Container Utama */
+.foto-content-container {
+    width: 100%;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+}
+
+/* === STYLE UNTUK GALLERY HEADER YANG LEBIH CANTIK === */
+.gallery-header {
+    padding: 40px 0;
+    margin-bottom: 30px;
+    text-align: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+    background-size: cover;
+}
+
+.gallery-title-container {
+    position: relative;
+    z-index: 2;
+}
+
+.gallery-main-title {
+    margin: 0 0 15px 0;
+    font-size: 3em;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+    background: linear-gradient(45deg, #ffffff, #e8f4f8);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.gallery-subtitle {
+    font-size: 1.3em;
+    margin-bottom: 25px;
+    opacity: 0.95;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+}
+
+.gallery-divider {
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
+    margin: 0 auto;
+    border-radius: 3px;
+    box-shadow: 0 2px 8px rgba(255,255,255,0.3);
+}
+
+/* Grid Foto - FORMASI 3x3 UNTUK SEMUA LAYAR */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Kartu Foto Individual */
+.photo-card-item {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid #e9ecef;
+}
+
+.photo-card-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+}
+
+/* Container untuk thumbnail persegi */
+.photo-thumbnail-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+}
+
+/* Thumbnail Gambar - PERSEGI */
+.photo-thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+}
+
+.photo-card-item:hover .photo-thumbnail {
+    transform: scale(1.1);
+}
+
+/* Title Bar Merah di Bawah Kartu */
+.photo-title-bar {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: white;
+    flex-shrink: 0;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.photo-title-bar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s;
+}
+
+.photo-card-item:hover .photo-title-bar::before {
+    left: 100%;
+}
+
+.photo-card-title {
+    margin: 0;
+    font-size: 0.9em;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* === PAGINATION STYLES - DENGAN PANAH === */
+.gallery-pagination {
+    margin-top: 40px;
+    padding: 25px 0;
+    text-align: center;
+    border-top: 1px solid #e9ecef;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pagination-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 45px;
+    height: 45px;
+    padding: 0 15px;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    color: #495057;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.pagination-number:hover {
+    border-color: #007bff;
+    color: #007bff;
+    background: linear-gradient(135deg, #f8f9ff, #e3f2fd);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,123,255,0.2);
+}
+
+.pagination-number.active {
+    border-color: #007bff;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,123,255,0.3);
+}
+
+.pagination-ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 45px;
+    height: 45px;
+    padding: 0 10px;
+    color: #6c757d;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+/* Tombol Panah Pagination */
+.pagination-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 45px;
+    height: 45px;
+    padding: 0 15px;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    color: #495057;
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.pagination-arrow:hover:not(.disabled) {
+    border-color: #007bff;
+    color: #007bff;
+    background: linear-gradient(135deg, #f8f9ff, #e3f2fd);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,123,255,0.2);
+}
+
+.pagination-arrow.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: #f8f9fa;
+    transform: none;
+    box-shadow: none;
+}
+
+.pagination-arrow-left {
+    margin-right: 12px;
+}
+
+.pagination-arrow-right {
+    margin-left: 12px;
+}
+
+/* === STYLE UNTUK MODAL === */
+
+/* Backdrop Modal */
+.photo-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    backdrop-filter: blur(5px);
+}
+
+/* Konten Modal */
+.photo-modal-content {
+    max-width: 85%;
+    max-height: 85%;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Tombol Tutup Modal */
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    border: none;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+    z-index: 10001;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.modal-close-btn:hover {
+    background: rgba(0, 0, 0, 1);
+    transform: scale(1.1);
+}
+
+/* Gambar dalam Modal */
+.modal-image {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    background: #1a1a1a;
+}
+
+/* Detail Foto dalam Modal */
+.photo-details {
+    padding: 20px 25px;
+    color: #2d3748;
+    background: #ffffff;
+    border-top: 1px solid #e9ecef;
+}
+
+.photo-title {
+    margin: 0 0 8px 0;
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #1a202c;
+    line-height: 1.3;
+}
+
+.photo-context {
+    margin: 0;
+    font-size: 1em;
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+/* === ANIMASI === */
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.photo-modal-content {
+    animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-title-container {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* === RESPONSIVE DESIGN === */
+
+/* Tablet - Tetap 3x3 dengan gap lebih kecil */
+@media (max-width: 1024px) {
+    .photo-grid {
+        gap: 16px;
+    }
+    
+    .photo-title-bar {
+        padding: 14px 16px;
+        min-height: 65px;
+    }
+    
+    .photo-card-title {
+        font-size: 0.85em;
+    }
+
+    .pagination-number,
+    .pagination-arrow {
+        min-width: 40px;
+        height: 40px;
+        font-size: 0.95em;
+    }
+
+    .gallery-main-title {
+        font-size: 2.5em;
+    }
+    
+    .gallery-subtitle {
+        font-size: 1.2em;
+    }
+}
+
+/* Tablet Kecil - Tetap 3x3 */
+@media (max-width: 768px) {
+    .foto-content-container {
+        padding: 15px;
+    }
+    
+    .photo-grid {
+        gap: 12px;
+    }
+    
+    .photo-title-bar {
+        padding: 12px 14px;
+        min-height: 60px;
+    }
+    
+    .photo-card-title {
+        font-size: 0.8em;
+    }
+    
+    .photo-modal-content {
+        max-width: 90%;
+        max-height: 90%;
+    }
+    
+    .photo-details {
+        padding: 16px 20px;
+    }
+
+    .pagination-container {
+        gap: 8px;
+    }
+
+    .pagination-number,
+    .pagination-arrow {
+        min-width: 38px;
+        height: 38px;
+        font-size: 0.9em;
+        padding: 0 12px;
+    }
+
+    .pagination-arrow-left {
+        margin-right: 8px;
+    }
+
+    .pagination-arrow-right {
+        margin-left: 8px;
+    }
+
+    .gallery-header {
+        padding: 30px 0;
+    }
+
+    .gallery-main-title {
+        font-size: 2.2em;
+    }
+    
+    .gallery-subtitle {
+        font-size: 1.1em;
+    }
+}
+
+/* Mobile Kecil - Tetap 3x3 dengan gap lebih kecil */
+@media (max-width: 480px) {
+    .foto-content-container {
+        padding: 12px;
+    }
+    
+    .photo-grid {
+        gap: 10px;
+    }
+    
+    .photo-title-bar {
+        padding: 10px 12px;
+        min-height: 55px;
+    }
+    
+    .photo-card-title {
+        font-size: 0.75em;
+        line-height: 1.3;
+    }
+    
+    .modal-close-btn {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+    }
+    
+    .photo-title {
+        font-size: 1.2em;
+    }
+    
+    .photo-context {
+        font-size: 0.9em;
+    }
+
+    .pagination-container {
+        gap: 6px;
+    }
+
+    .pagination-number,
+    .pagination-arrow {
+        min-width: 25px; /* Diubah dari 35px */
+        height: 25px; /* Diubah dari 35px */
+        font-size: 0.7em; /* Diubah dari 0.85em */
+        padding: 0 4px;
+    }
+
+    .pagination-ellipsis {
+        min-width: 25px;
+        height: 25px;
+        font-size: 0.7em;
+    }
+
+    .pagination-arrow-left {
+        margin-right: 6px;
+    }
+
+    .pagination-arrow-right {
+        margin-left: 6px;
+    }
+
+    .gallery-header {
+        padding: 25px 15px;
+        border-radius: 12px;
+    }
+
+    .gallery-main-title {
+        font-size: 1.8em;
+        letter-spacing: 2px;
+    }
+    
+    .gallery-subtitle {
+        font-size: 1em;
+        margin-bottom: 20px;
+    }
+    
+    .gallery-divider {
+        width: 80px;
+        height: 3px;
+    }
+}

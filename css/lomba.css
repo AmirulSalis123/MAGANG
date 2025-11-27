@@ -1,0 +1,335 @@
+.lomba-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.content-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.content-header h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 2.2rem;
+}
+
+.content-header p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+}
+
+.lomba-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #6a89cc, #4a69bd);
+    color: white;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    min-width: 150px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.lomba-section {
+    margin-bottom: 40px;
+}
+
+.lomba-section h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.section-icon {
+    font-size: 1.5rem;
+}
+
+.lomba-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+}
+
+.lomba-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.lomba-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.lomba-image-container {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.lomba-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.lomba-card:hover .lomba-image {
+    transform: scale(1.05);
+}
+
+.lomba-category-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255,255,255,0.9);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.winner-overlay {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.winner-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.winner-badge {
+    background: rgba(255,255,255,0.9);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.lomba-card-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.lomba-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.lomba-icon {
+    font-size: 1.8rem;
+    margin-top: 5px;
+}
+
+.lomba-title h3 {
+    margin: 0 0 5px 0;
+    color: #2c3e50;
+    font-size: 1.3rem;
+}
+
+.lomba-date {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.lomba-description {
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.lomba-description p {
+    margin: 0;
+    color: #5a6c7d;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.lomba-info {
+    margin-bottom: 15px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.label {
+    font-weight: 600;
+    color: #5a6c7d;
+}
+
+.value {
+    color: #2c3e50;
+}
+
+.status.upcoming {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.achievement-text {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+.lomba-actions {
+    margin-top: auto;
+}
+
+.youtube-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ff0000;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+}
+
+.youtube-link:hover {
+    background: #cc0000;
+}
+
+.registration-info {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.registration-info h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.info-content p {
+    margin-top: 0;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.info-content ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.info-content li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.contact-lomba {
+    text-align: center;
+    padding: 20px;
+    background: #e8f4fd;
+    border-radius: 12px;
+}
+
+.contact-lomba p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.contact-icon {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .lomba-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stat-card {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .lomba-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .lomba-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .info-item {
+        flex-direction: column;
+        gap: 5px;
+    }
+}

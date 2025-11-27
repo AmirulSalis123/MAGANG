@@ -1,0 +1,204 @@
+/* PENGADUAN CONTENT STYLES */
+.pengaduan-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.pengaduan-content .content-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* FORM STYLES - TABLE LIKE LAYOUT */
+.pengaduan-form {
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 2rem;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.form-row:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.form-label {
+    width: 150px;
+    font-weight: 600;
+    color: #333;
+    padding-right: 1rem;
+    flex-shrink: 0;
+}
+
+.form-input {
+    flex: 1;
+}
+
+.form-input input,
+.form-input textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-input input:focus,
+.form-input textarea:focus {
+    outline: none;
+    border-color: #1e3c72;
+    box-shadow: 0 0 0 2px rgba(30, 60, 114, 0.1);
+}
+
+.form-input textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+}
+
+/* SUBMIT BUTTON */
+.submit-btn {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30, 60, 114, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* SUCCESS MESSAGE */
+.success-message {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border: 2px solid #27ae60;
+}
+
+.success-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.success-message h2 {
+    color: #27ae60;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.success-message p {
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30, 60, 114, 0.3);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .pengaduan-content {
+        padding: 1rem;
+    }
+    
+    .pengaduan-form {
+        padding: 1rem;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .form-label {
+        width: 100%;
+        padding-right: 0;
+    }
+    
+    .form-input {
+        width: 100%;
+    }
+    
+    .pengaduan-content .content-header h1 {
+        font-size: 1.3rem;
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .pengaduan-form {
+        padding: 0.5rem;
+    }
+    
+    .form-input input,
+    .form-input textarea {
+        padding: 0.5rem;
+    }
+    
+    .submit-btn {
+        width: 100%;
+        padding: 1rem;
+    }
+}
+
+/* PLACEHOLDER STYLING */
+.form-input input::placeholder,
+.form-input textarea::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* VALIDATION STYLING */
+.form-input input:invalid:not(:focus):not(:placeholder-shown),
+.form-input textarea:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: #e74c3c;
+}
+
+.form-input input:valid:not(:focus):not(:placeholder-shown),
+.form-input textarea:valid:not(:focus):not(:placeholder-shown) {
+    border-color: #27ae60;
+}
