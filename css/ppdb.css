@@ -32,7 +32,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
     overflow: hidden;
 }
 
@@ -56,8 +56,8 @@
 
 .hero-content {
     position: relative;
-    max-width: 1200px;
-    width: 100%;
+    max-width: 1200px !important;
+    width: 100% !important;
     padding: 4rem 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -79,6 +79,7 @@
     font-weight: 600;
     margin-bottom: 1.5rem;
     border: 1px solid rgba(255,255,255,0.3);
+    color: white;
 }
 
 .hero-text h1 {
@@ -98,6 +99,7 @@
     opacity: 0.9;
     margin-bottom: 2.5rem;
     line-height: 1.6;
+    color: white;
 }
 
 .hero-actions {
@@ -120,6 +122,10 @@
     text-decoration: none;
 }
 
+.btn-primary {
+    background: var(--secondary);
+    color: var(--dark);
+}
 
 .btn-primary:hover {
     transform: translateY(-2px);
@@ -130,12 +136,13 @@
     background: rgba(255,255,255,0.2);
     backdrop-filter: blur(10px);
     color: white;
-    border: 2px solid rgba(255,255,255,0.3);
+    border: 2px solid white;
 }
 
 .btn-secondary:hover {
     background: rgba(255,255,255,0.3);
     transform: translateY(-2px);
+    color: white;
 }
 
 .btn-icon {
@@ -147,6 +154,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
+    justify-items: center;
 }
 
 .stat-card {
@@ -159,6 +167,8 @@
     align-items: center;
     gap: 1rem;
     transition: transform 0.3s ease;
+    color: white;
+    width: 100%;
 }
 
 .stat-card:hover {
@@ -168,6 +178,7 @@
 .stat-icon {
     font-size: 2rem;
     opacity: 0.9;
+    color: white;
 }
 
 .stat-content {
@@ -178,6 +189,7 @@
     font-size: 2rem;
     font-weight: 800;
     line-height: 1;
+    color: white;
 }
 
 .stat-label {
@@ -816,6 +828,7 @@
     
     .hero-stats {
         grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
     }
 }
 
@@ -834,6 +847,21 @@
     
     .hero-actions {
         justify-content: center;
+    }
+    
+    .hero-stats {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .stat-card {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        text-align: center;
     }
     
     .resources-grid,
@@ -901,11 +929,17 @@
 @media (max-width: 480px) {
     .hero-stats {
         grid-template-columns: 1fr;
+        align-items: center;
     }
     
     .stat-card {
         flex-direction: column;
         text-align: center;
+        gap: 0.75rem;
+    }
+    
+    .stat-icon {
+        margin-bottom: 0.5rem;
     }
     
     .contact-grid {
@@ -939,6 +973,19 @@
     
     .hero-text p {
         font-size: 1.1rem;
+    }
+}
+
+/* Untuk layar sangat kecil */
+@media (max-width: 360px) {
+    .hero-stats {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    
+    .stat-card {
+        width: 90%;
+        margin: 0 auto;
     }
 }
 

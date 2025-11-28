@@ -255,7 +255,11 @@ const BerandaContent = () => {
                         zIndex: 10,
                         maxWidth: '800px',
                         width: '100%',
-                        padding: isMobile ? '0 5px' : '0'
+                        padding: isMobile ? '0 5px' : '0',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center'
                     }
                 },
                     React.createElement('h1', { 
@@ -263,13 +267,14 @@ const BerandaContent = () => {
                             fontSize: isMobile ? '1.8rem' : '3.5rem',
                             fontWeight: '800', 
                             margin: '0 0 8px 0',
-                            textShadow: '0 2px 8px rgba(0,0,0,0.5)',
+                            textShadow: '0 2px 8px #FFFFFF)',
                             color: 'white',
                             lineHeight: '1.1',
                             background: 'linear-gradient(to right, #fff, #e6f7ff)',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
-                            padding: isMobile ? '0 5px' : '0'
+                            padding: isMobile ? '0 5px' : '0',
+                            textAlign: 'center'
                         } 
                     }, 'SELAMAT DATANG'),
                     
@@ -281,7 +286,8 @@ const BerandaContent = () => {
                             textShadow: '0 2px 4px rgba(0,0,0,0.5)',
                             color: 'white',
                             opacity: '0.9',
-                            padding: isMobile ? '0 5px' : '0'
+                            padding: isMobile ? '0 5px' : '0',
+                            textAlign: 'center'
                         } 
                     }, 'SDN SAMPANGAN 01'),
                     
@@ -294,27 +300,23 @@ const BerandaContent = () => {
                             textShadow: '0 1px 3px rgba(0,0,0,0.5)',
                             fontWeight: '400',
                             opacity: '0.95',
-                            padding: isMobile ? '0 5px' : '0'
+                            padding: isMobile ? '0 5px' : '0',
+                            textAlign: 'center'
                         } 
                     }, 'Sistem Informasi Akademik Resmi SDN Sampangan 01. Gerbang informasi kegiatan belajar mengajar dan perkembangan sekolah.'),
                     
-                    // Tombol Aksi - YANG SUDAH DIPERBAIKI
+                    // Tombol Aksi - YANG SUDAH DIPERBAIKI POSISINYA DI TENGAH
                     React.createElement('div', {
                         style: {
                             display: 'flex',
-                            gap: isMobile ? '10px' : '20px',
                             justifyContent: 'center',
-                            flexWrap: 'wrap',
-                            flexDirection: isMobile ? 'column' : 'row',
                             alignItems: 'center',
-                            width: isMobile ? '100%' : 'auto',
-                            maxWidth: isMobile ? '280px' : 'none',
-                            padding: isMobile ? '0 5px' : '0'
+                            width: '100%'
                         }
                     },
                         React.createElement('button', {
                             style: {
-                                padding: isMobile ? '10px 16px' : '14px 32px',
+                                padding: isMobile ? '12px 24px' : '14px 32px',
                                 background: '#e74c3c',
                                 border: 'none',
                                 borderRadius: '50px',
@@ -322,10 +324,10 @@ const BerandaContent = () => {
                                 fontWeight: '600',
                                 cursor: 'pointer',
                                 transition: 'all 0.3s ease',
-                                fontSize: isMobile ? '0.85rem' : '1rem',
-                                width: isMobile ? '100%' : 'auto',
-                                minWidth: isMobile ? 'auto' : '160px',
-                                boxShadow: '0 4px 15px rgba(231, 76, 60, 0.3)'
+                                fontSize: isMobile ? '0.9rem' : '1rem',
+                                minWidth: isMobile ? '180px' : '200px',
+                                boxShadow: '0 4px 15px rgba(231, 76, 60, 0.3)',
+                                textAlign: 'center'
                             },
                             onClick: () => navigateToSection('ppdb'),
                             onMouseEnter: (e) => {
