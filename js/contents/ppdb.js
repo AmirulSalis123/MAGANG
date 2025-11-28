@@ -210,7 +210,7 @@ const PPDBContent = () => {
             React.createElement(
               "button",
               {
-                className: "btn-secondary",
+                className: "btn-secondaryy",
                 onClick: () =>
                   document
                     .querySelector(".resources-section")
@@ -237,12 +237,12 @@ const PPDBContent = () => {
                 { className: "stat-content" },
                 React.createElement(
                   "div",
-                  { className: "stat-number" },
+                  { className: "stat-numberr" },
                   stat.number
                 ),
                 React.createElement(
                   "div",
-                  { className: "stat-label" },
+                  { className: "stat-labell" },
                   stat.label
                 )
               )

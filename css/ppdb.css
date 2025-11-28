@@ -132,14 +132,17 @@
     box-shadow: 0 8px 25px rgba(245, 158, 11, 0.6);
 }
 
-.btn-secondary {
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(10px);
-    color: white;
-    border: 2px solid white;
+.btn-secondaryy {
+    background: transparent;
+    color: #FFFFFF;
+    border: 2px solid #1e3c72;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
-
-.btn-secondary:hover {
+.btn-secondaryy:hover {
     background: rgba(255,255,255,0.3);
     transform: translateY(-2px);
     color: white;
@@ -185,14 +188,14 @@
     color: white;
 }
 
-.stat-number {
+.stat-numberr {
     font-size: 2rem;
     font-weight: 800;
     line-height: 1;
     color: white;
 }
 
-.stat-label {
+.stat-labell {
     font-size: 0.875rem;
     color: white;
     opacity: 0.9;
