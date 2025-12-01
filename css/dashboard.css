@@ -24,7 +24,7 @@ body {
     padding: 2rem 0;
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
     scrollbar-width: none;
-    -ms-overflow-style: none
+    -ms-overflow-style: none;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -64,6 +64,8 @@ body {
     cursor: pointer;
     transition: all 0.3s;
     border-left: 4px solid transparent;
+    display: flex;
+    align-items: center;
 }
 
 .nav-item:hover {
@@ -211,160 +213,73 @@ body {
     justify-content: space-between;
 }
 
-/* MAIN CONTENT */
-.main-content {
-    flex: 1;
-    padding: 2rem;
-    background-color: #f8f9fa;
+/* ==================== FOOTER STYLES ==================== */
+.dashboard-with-footer {
+    display: flex;
+    min-height: 100vh;
 }
 
-.mobile-header {
-    display: none;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    padding: 1rem;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.menu-toggle {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-.menu-toggle:hover {
-    background-color: rgba(0,0,0,0.1);
-}
-
-.content-header {
-    margin-bottom: 2rem;
-}
-
-.content-header h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #1e3c72;
-    margin-bottom: 0.5rem;
-}
-
-.content-header p {
-    color: #6c757d;
-    font-size: 1.1rem;
-}
-
-/* PROGRAM CARDS */
-.programs-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.program-card {
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    border-left: 5px solid #1e3c72;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.program-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-}
-
-.program-card h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #1e3c72;
-    margin-bottom: 0.5rem;
-    line-height: 1.4;
-}
-
-.participant-count {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #2a5298;
-    margin-top: 0.5rem;
-}
-
-/* STATISTICS SECTION */
-.stats-section {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    margin-bottom: 2rem;
-}
-
-.stats-section h2 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #1e3c72;
-    margin-bottom: 1rem;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-}
-
-.stat-item {
-    text-align: center;
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-}
-
-.stat-number {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #1e3c72;
-    margin-bottom: 0.5rem;
-}
-
-.stat-label {
-    font-size: 0.9rem;
-    color: #6c757d;
-}
-
-/* CURRENT DATA SECTION */
-.current-data {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.current-data h2 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #1e3c72;
-    margin-bottom: 1rem;
-}
-
-.chart-placeholder {
-    background: #f8f9fa;
-    border: 2px dashed #dee2e6;
-    border-radius: 8px;
-    padding: 3rem;
-    text-align: center;
-    color: #6c757d;
-}
-
-/* RESPONSIVE DESIGN */
-@media (max-width: 768px) {
-    .dashboard {
+/* Untuk desktop dengan sidebar */
+@media (min-width: 769px) {
+    .dashboard-with-footer {
+        display: flex;
+        min-height: 100vh;
+    }
+    
+    /* Sidebar fixed di kiri */
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 280px;
+        height: 100vh;
+        z-index: 1000;
+        overflow-y: auto;
+    }
+    
+    /* Konten utama */
+    .main-content-wrapper {
+        margin-left: 280px;
+        width: calc(100% - 280px);
+        display: flex;
         flex-direction: column;
+        min-height: 100vh;
+    }
+    
+    .main-content {
+        flex: 1;
+        width: 100%;
+        padding: 2rem;
+        background-color: #f8f9fa;
+        overflow-y: auto;
+    }
+    
+    .footer-container {
+        width: 100vw; /* Lebar penuh viewport */
+        background: linear-gradient(180deg, #1e3c72 0%, #2a5298 100%);
+        margin-left: -280px;
+        padding-left: 280px;
+    }
+    
+    .footer {
+        color: white;
+        padding: 2rem;
+        width: 100%;
+    }
+    
+    .mobile-header,
+    .mobile-overlay,
+    .mobile-sidebar {
+        display: none;
+    }
+}
+
+/* Untuk mobile */
+@media (max-width: 768px) {
+    .dashboard-with-footer {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
     }
     
     .sidebar {
@@ -375,10 +290,183 @@ body {
         display: flex;
     }
     
-    .main-content {
-        padding: 1rem;
+    .main-content-wrapper {
+        margin-left: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
     }
     
+    .main-content {
+        flex: 1;
+        padding: 1rem;
+        background-color: #f8f9fa;
+    }
+    
+    /* FOOTER MOBILE */
+    .footer-container {
+        width: 100%;
+        background: linear-gradient(180deg, #1e3c72 0%, #2a5298 100%);
+    }
+    
+    .footer {
+        color: white;
+        padding: 1.2rem 1rem;
+        width: 100%;
+    }
+}
+
+/* STYLE FOOTER CONTENT (umum untuk semua ukuran) */
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.footer-logo img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.footer-logo-text h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: white;
+    line-height: 1.3;
+}
+
+.footer-logo-text p {
+    font-size: 0.8rem;
+    color: #e0e0e0;
+    line-height: 1.4;
+}
+
+.footer-section h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #FFFFFF;
+    border-left: 3px solid #4dabf7;
+    padding-left: 0.8rem;
+}
+
+.footer-about p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #e0e0e0;
+    margin-bottom: 0.7rem;
+}
+
+.footer-address p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #e0e0e0;
+    margin-bottom: 0.7rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.footer-address .icon-placeholder {
+    color: #4dabf7;
+    margin-top: 0.1rem;
+    min-width: 16px;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.spmb-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.spmb-item {
+    display: flex;
+    flex-direction: column;
+    padding: 0.6rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    border-left: 3px solid #4dabf7;
+}
+
+.spmb-item h5 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    color: white;
+}
+
+.spmb-item p {
+    font-size: 0.75rem;
+    color: #e0e0e0;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* ==================== FOOTER PPDB STYLES ==================== */
+.ppdb-text {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #e0e0e0;
+    margin-bottom: 0.7rem;
+}
+
+.ppdb-text p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #e0e0e0;
+    margin: 0;
+}
+
+/* Spesifik untuk teks dalam container PPDB */
+.spmb-info-simple .ppdb-text p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #e0e0e0;
+}
+
+.footer-bottom {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: right;
+    color: #e0e0e0;
+    font-size: 0.8rem;
+}
+
+/* Responsive Footer */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .footer {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
     .programs-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
@@ -408,13 +496,87 @@ body {
     .current-data {
         padding: 1.5rem;
     }
-}
+    
+    /* Footer mobile */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    
+    .footer-logo {
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-section {
+        text-align: left;
+    }
+    
+    .footer-section h4 {
+        border-left: none;
+        border-bottom: 2px solid #4dabf7;
+        padding-left: 0;
+        padding-bottom: 0.5rem;
+        display: inline-block;
+        margin-bottom: 0.8rem;
+        text-align: center;
+    }
+    
+    .footer-address p {
+        justify-content: flex-start;
+        text-align: center;
+    }
+    
+    /* FOOTER BOTTOM STYLES */
+    .footer-bottom {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #e0e0e0;
+        font-size: 0.8rem;
+    }
 
-@media (min-width: 769px) {
-    .mobile-header,
-    .mobile-overlay,
-    .mobile-sidebar {
-        display: none;
+    /* Desktop: rata kanan */
+    @media (min-width: 769px) {
+        .footer-bottom {
+            text-align: right;
+        }
+    }
+
+    /* Mobile: rata tengah */
+    @media (max-width: 768px) {
+        .footer-bottom {
+            text-align: center;
+        }
+    }
+    
+    /* PPDB text mobile */
+    .ppdb-text p {
+        font-size: 0.75rem;
+        line-height: 1.4;
+        text-align: left;
+    }
+    
+    .spmb-info-simple .ppdb-text p {
+        font-size: 0.75rem;
+        line-height: 1.4;
+    }
+    
+    /* SOSIAL MEDIA DI TENGAH UNTUK MOBILE */
+    .footer-about .social-media-icons {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    
+    /* Tentang sekolah teks rata tengah */
+    .footer-about p {
+        text-align: center;
+    }
+    
+    /* Tombol PPDB di tengah */
+    .spmb-info-simple {
+        align-items: center;
     }
 }
 
@@ -428,6 +590,120 @@ body {
     }
 }
 
+/* Responsive Footer untuk layar sangat besar */
+@media (min-width: 1400px) {
+    .footer-content {
+        max-width: 1300px;
+        gap: 2rem;
+    }
+    
+    .footer {
+        padding: 2rem 3rem;
+    }
+}
+
+/* Responsive untuk layar kecil mobile */
+@media (max-width: 480px) {
+    .footer {
+        padding: 1rem 0.8rem;
+    }
+    
+    .footer-content {
+        gap: 1rem;
+    }
+    
+    .footer-logo img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .footer-logo-text h3 {
+        font-size: 0.9rem;
+    }
+    
+    .footer-logo-text p {
+        font-size: 0.75rem;
+    }
+    
+    .footer-section h4 {
+        font-size: 0.9rem;
+    }
+    
+    /* PPDB text untuk layar sangat kecil */
+    .ppdb-text p {
+        font-size: 0.7rem;
+        line-height: 1.3;
+        text-align: center;
+    }
+    
+    /* Sosial media tetap di tengah untuk layar sangat kecil */
+    .footer-about .social-media-icons {
+        justify-content: center;
+    }
+    
+    /* Ikon sosial media ukuran sedikit lebih besar */
+    .footer-about .social-media-icons a {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+    }
+}
+
+/* ==================== MOBILE HEADER STYLES ==================== */
+.mobile-header {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 997;
+    min-height: 56px;
+    transition: all 0.3s ease;
+}
+
+/* Tombol menu toggle */
+button.menu-toggle {
+    all: unset;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    color: white !important;
+    line-height: 1;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.3s ease;
+    margin: 8px;
+    background-color: #2a5298 !important;
+    border-radius: 4px !important;
+    border: none !important;
+}
+
+/* Efek hover untuk tombol */
+button.menu-toggle:hover {
+    background-color: #1e3c72 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Efek active untuk tombol */
+button.menu-toggle:active {
+    background-color: #2a5298 !important;
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Spacer agar konten tidak tertutup header */
+.main-content {
+    padding-top: 56px !important;
+}
+
 /* Color variants for program cards */
 .program-card:nth-child(1) { border-left-color: #e74c3c; }
 .program-card:nth-child(2) { border-left-color: #3498db; }
@@ -435,3 +711,72 @@ body {
 .program-card:nth-child(4) { border-left-color: #f39c12; }
 .program-card:nth-child(5) { border-left-color: #9b59b6; }
 .program-card:nth-child(6) { border-left-color: #1abc9c; }
+
+/* ==================== FOOTER FIXES UNTUK SEMUA UKURAN ==================== */
+/* Untuk semua ukuran layar - Sosial media di tengah */
+.footer-about .social-media-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+/* Untuk desktop - tetap di tengah */
+@media (min-width: 769px) {
+    .footer-about .social-media-icons {
+        justify-content: flex-start; /* Desktop: rata kiri */
+    }
+}
+
+/* Untuk tablet - tetap di tengah */
+@media (max-width: 768px) {
+    .footer-about .social-media-icons {
+        justify-content: center;
+    }
+}
+
+/* ==================== FLOATING WHATSAPP BUTTON ==================== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgb(37, 211, 102);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 9999; /* NILAI SANGAT TINGGI */
+    box-shadow: 0 4px 12px rgb(37, 211, 102);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    transform: scale(1);
+    padding: 0;
+    line-height: 1;
+    animation: float 3s ease-in-out infinite;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 8px 20px rgb(37, 211, 102);
+    background: rgb(37, 211, 102);
+}
+
+.whatsapp-float:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}

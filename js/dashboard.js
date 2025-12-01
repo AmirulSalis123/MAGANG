@@ -2,7 +2,7 @@ const { useState, useEffect } = React;
 
 // REGISTRY untuk semua konten
 const contentRegistry = {
-  beranda: null, // Akan diisi setelah beranda.js dimuat
+  beranda: null,
 };
 
 // Default content untuk fallback
@@ -22,6 +22,393 @@ const DefaultContent = ({ section }) => {
 
 contentRegistry.default = DefaultContent;
 
+// Komponen Footer dengan container yang lebih lebar
+const Footer = () => {
+  const handlePpdbClick = () => {
+    // Navigasi ke section ppdb
+    const event = new CustomEvent('navigateTo', { detail: 'ppdb' });
+    window.dispatchEvent(event);
+    
+    // Scroll ke top jika di mobile
+    if (window.innerWidth <= 768) {
+      window.scrollTo(0, 0);
+    }
+  };
+
+  return React.createElement(
+    "div",
+    { className: "footer-container" },
+    React.createElement(
+      "footer",
+      { className: "footer" },
+      React.createElement(
+        "div",
+        { className: "footer-content" },
+        
+        // Bagian Logo Sekolah - ICON BESAR SAJA
+        React.createElement(
+          "div",
+          { className: "footer-section footer-logo" },
+          React.createElement("img", {
+            src: "imgs/ICON SDN SAMPANGAN 01.png",
+            alt: "SDN Sampangan 01 Logo",
+            style: {
+              width: "150px", // LEBIH BESAR
+              height: "150px", // LEBIH BESAR
+              objectFit: "contain",
+              borderRadius: "12px",
+              padding: "10px",
+              marginBottom: "10px"
+            },
+            onError: (e) => {
+              console.error("Gambar footer tidak dapat dimuat");
+              e.target.style.display = 'none';
+              const parent = e.target.parentNode;
+              const fallback = React.createElement(
+                "div",
+                {
+                  style: {
+                    width: "100px",
+                    height: "100px",
+                    borderRadius: "12px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: "10px"
+                  }
+                },
+                React.createElement("span", {
+                  style: { fontSize: "3rem", color: "white" } // ICON FALLBACK BESAR
+                },)
+              );
+              const fallbackElement = document.createElement('div');
+              ReactDOM.render(fallback, fallbackElement);
+              parent.insertBefore(fallbackElement.firstChild, e.target);
+            }
+          })
+        ),
+        
+        // Bagian About
+        React.createElement(
+          "div",
+          { className: "footer-section footer-about" },
+          React.createElement("h4", null, "Tentang Sekolah"),
+          React.createElement("p", null, "SDN Sampangan 01 Semarang adalah lembaga pendidikan dasar yang berdedikasi untuk membentuk karakter dan mengembangkan potensi siswa melalui pendidikan berkualitas."),
+          
+          // MEDIA SOSIAL KOTAK SEMPURNA
+          React.createElement(
+            "div",
+            {
+              className: "social-media-icons",
+              style: {
+                marginTop: "1rem",
+                display: "flex",
+                gap: "0.8rem",
+                alignItems: "center"
+              }
+            },
+            
+            // Facebook - KOTAK SEMPURNA (ANIMASI SCALE DOWN)
+            React.createElement(
+              "a",
+              {
+                href: "https://www.facebook.com/people/Esde-Samsatjos/pfbid02WfwvanmFRYeEzFD62szs5fcDybHJ6B7bRdnTqNUbC8emTTZW9vzcBuVxAikNpRk4l/",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                title: "Facebook SDN Sampangan 01",
+                className: "social-icon facebook",
+                style: {
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "25px",
+                  height: "25px",
+                  borderRadius: "0",
+                  backgroundColor: "#1877F2",
+                  color: "white",
+                  textDecoration: "none",
+                  fontSize: "0.9rem", // Diperkecil agar sesuai dengan ukuran 25px
+                  transition: "all 0.2s ease",
+                  transform: "scale(1)" // State awal
+                },
+                onMouseEnter: (e) => {
+                  e.target.style.transform = "scale(0.85)"; // Mengecil 15%
+                  e.target.style.opacity = "0.8";
+                  e.target.style.boxShadow = "inset 0 2px 4px rgba(0, 0, 0, 0.2)";
+                },
+                onMouseLeave: (e) => {
+                  e.target.style.transform = "scale(1)"; // Kembali ke ukuran normal
+                  e.target.style.opacity = "1";
+                  e.target.style.boxShadow = "none";
+                },
+                onMouseDown: (e) => {
+                  e.target.style.transform = "scale(0.7)"; // Lebih kecil saat diklik
+                  e.target.style.backgroundColor = "#0e5dc4"; // Warna lebih gelap
+                },
+                onMouseUp: (e) => {
+                  e.target.style.transform = "scale(0.85)"; // Kembali ke hover state
+                  e.target.style.backgroundColor = "#1877F2"; // Kembali ke warna asli
+                }
+              },
+              React.createElement("i", { className: "fab fa-facebook-f" })
+            ),
+            
+            // Instagram - KOTAK SEMPURNA (ANIMASI SCALE DOWN)
+            React.createElement(
+              "a",
+              {
+                href: "https://instagram.com/sdnsampangan01",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                title: "Instagram SDN Sampangan 01",
+                className: "social-icon instagram",
+                style: {
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "25px",
+                  height: "25px",
+                  borderRadius: "0",
+                  background: "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
+                  color: "white",
+                  textDecoration: "none",
+                  fontSize: "0.9rem",
+                  transition: "all 0.2s ease",
+                  transform: "scale(1)"
+                },
+                onMouseEnter: (e) => {
+                  e.target.style.transform = "scale(0.85)";
+                  e.target.style.opacity = "0.8";
+                  e.target.style.boxShadow = "inset 0 2px 4px rgba(0, 0, 0, 0.2)";
+                },
+                onMouseLeave: (e) => {
+                  e.target.style.transform = "scale(1)";
+                  e.target.style.opacity = "1";
+                  e.target.style.boxShadow = "none";
+                },
+                onMouseDown: (e) => {
+                  e.target.style.transform = "scale(0.7)";
+                  e.target.style.background = "linear-gradient(45deg, #d0842b 0%, #cc562c 25%, #c22137 50%, #ac1f58 75%, #9c1468 100%)";
+                },
+                onMouseUp: (e) => {
+                  e.target.style.transform = "scale(0.85)";
+                  e.target.style.background = "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)";
+                }
+              },
+              React.createElement("i", { className: "fab fa-instagram" })
+            ),
+            
+            // YouTube - KOTAK SEMPURNA (ANIMASI SCALE DOWN)
+            React.createElement(
+              "a",
+              {
+                href: "https://www.youtube.com/channel/UCx09XyePbtwy6H1O3oB4uSA",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                title: "YouTube SDN Sampangan 01",
+                className: "social-icon youtube",
+                style: {
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "25px",
+                  height: "25px",
+                  borderRadius: "0",
+                  backgroundColor: "#FF0000",
+                  color: "white",
+                  textDecoration: "none",
+                  fontSize: "0.9rem",
+                  transition: "all 0.2s ease",
+                  transform: "scale(1)"
+                },
+                onMouseEnter: (e) => {
+                  e.target.style.transform = "scale(0.85)";
+                  e.target.style.opacity = "0.8";
+                  e.target.style.boxShadow = "inset 0 2px 4px rgba(0, 0, 0, 0.2)";
+                },
+                onMouseLeave: (e) => {
+                  e.target.style.transform = "scale(1)";
+                  e.target.style.opacity = "1";
+                  e.target.style.boxShadow = "none";
+                },
+                onMouseDown: (e) => {
+                  e.target.style.transform = "scale(0.7)";
+                  e.target.style.backgroundColor = "#cc0000";
+                },
+                onMouseUp: (e) => {
+                  e.target.style.transform = "scale(0.85)";
+                  e.target.style.backgroundColor = "#FF0000";
+                }
+              },
+              React.createElement("i", { className: "fab fa-youtube" })
+            ),
+            
+            // WhatsApp - KOTAK SEMPURNA (ANIMASI SCALE DOWN)
+            React.createElement(
+              "a",
+              {
+                href: "https://wa.me/6281325763067",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                title: "WhatsApp SDN Sampangan 01",
+                className: "social-icon whatsapp",
+                style: {
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "25px",
+                  height: "25px",
+                  borderRadius: "0",
+                  backgroundColor: "#25D366",
+                  color: "white",
+                  textDecoration: "none",
+                  fontSize: "0.9rem",
+                  transition: "all 0.2s ease",
+                  transform: "scale(1)"
+                },
+                onMouseEnter: (e) => {
+                  e.target.style.transform = "scale(0.85)";
+                  e.target.style.opacity = "0.8";
+                  e.target.style.boxShadow = "inset 0 2px 4px rgba(0, 0, 0, 0.2)";
+                },
+                onMouseLeave: (e) => {
+                  e.target.style.transform = "scale(1)";
+                  e.target.style.opacity = "1";
+                  e.target.style.boxShadow = "none";
+                },
+                onMouseDown: (e) => {
+                  e.target.style.transform = "scale(0.7)";
+                  e.target.style.backgroundColor = "#1da851";
+                },
+                onMouseUp: (e) => {
+                  e.target.style.transform = "scale(0.85)";
+                  e.target.style.backgroundColor = "#25D366";
+                }
+              },
+              React.createElement("i", { className: "fab fa-whatsapp" })
+            )
+          )
+        ),
+        
+        // Bagian Address
+        React.createElement(
+          "div",
+          { className: "footer-section footer-address" },
+          React.createElement("h4", null, "Alamat & Kontak"),
+          React.createElement("p", null,
+            React.createElement("span", { className: "icon-placeholder" }, "📍"),
+            "Jl. Menoreh Tengah III No.23, Sampangan, Semarang"
+          ),
+          React.createElement("p", null,
+            React.createElement("span", { className: "icon-placeholder" }, "📞"),
+            "(024) 8319427"
+          ),
+          React.createElement("p", null,
+            React.createElement("span", { className: "icon-placeholder" }, "✉️"),
+            "sdnsampangan01gajahmungkur@gmail.com"
+          ),
+        ),
+        
+        // Bagian Info PPDB - VERSI SIMPEL
+        React.createElement(
+          "div",
+          { className: "footer-section" },
+          React.createElement("h4", null, "Info PPDB"),
+          React.createElement(
+            "div",
+            { 
+              className: "spmb-info-simple",
+              style: {
+                display: "flex",
+                flexDirection: "column",
+                gap: "1rem"
+              }
+            },
+            React.createElement(
+              "div",
+              { 
+        className: "ppdb-text"
+      },
+              React.createElement("p", null, "Penerimaan Peserta Didik Baru (PPDB) Tahun Ajaran 2026/2027 dibuka mulai 1 Agustus 2025. Pendaftaran sewaktu-waktu ditutup apabila kuota yang tersedia telah terpenuhi.")
+            ),
+            React.createElement(
+    "button",
+    {
+        onClick: () => {
+            const event = new CustomEvent('navigateTo', { detail: 'ppdb' });
+            window.dispatchEvent(event);
+            
+            if (window.innerWidth <= 768) {
+                window.scrollTo(0, 0);
+            }
+        },
+        className: "ppdb-button",
+        style: {
+            padding: "0.8rem 1.5rem",
+            backgroundColor: "#FF0000", // Warna merah
+            color: "white", // Font putih
+            border: "none", // Border merah sama
+            borderRadius: "50px",
+            fontSize: "0.9rem",
+            fontWeight: "600",
+            cursor: "pointer",
+            transition: "all 0.3s ease",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "0.5rem",
+            width: "100%",
+             width: window.innerWidth <= 768 ? "50%" : "100%", // <-- PERUBAHAN DI SINI
+            outline: "none",
+            margin: window.innerWidth <= 768 ? "0 auto" : "0" // <-- Center di mobile
+        },
+        onMouseEnter: (e) => {
+            // Saat hover: background putih, font merah
+            e.target.style.backgroundColor = "white";
+            e.target.style.color = "#FF0000";
+            e.target.style.transform = "translateY(-2px)";
+            e.target.style.boxShadow = "none";
+        },
+        onMouseLeave: (e) => {
+            // Kembali ke normal: background merah, font putih
+            e.target.style.backgroundColor = "#FF0000";
+            e.target.style.color = "white";
+            e.target.style.transform = "translateY(0)";
+            e.target.style.boxShadow = "none";
+        },
+        onMouseDown: (e) => {
+            // Saat diklik: background putih, font merah (lebih gelap)
+            e.target.style.backgroundColor = "white";
+            e.target.style.color = "#FF0000";
+            e.target.style.borderColor = "#FF0000";
+            e.target.style.transform = "translateY(0)";
+            e.target.style.boxShadow = "none";
+        },
+        onMouseUp: (e) => {
+            // Kembali ke hover state
+            e.target.style.backgroundColor = "white";
+            e.target.style.color = "#FF0000";
+            e.target.style.borderColor = "#FF0000";
+            e.target.style.transform = "translateY(-2px)";
+            e.target.style.boxShadow = "none";
+        }
+    },
+    "CARI INFO PPDB"
+)
+          )
+        )
+      ),
+      
+      // Footer Bottom
+      React.createElement(
+        "div",
+        { className: "footer-bottom" },
+        React.createElement("p", null, `Copyright © ${new Date().getFullYear()} SDN Sampangan 01 Semarang`),
+      )
+    )
+  );
+};
+
 const Dashboard = () => {
   const [activeSection, setActiveSection] = useState(() => {
     return localStorage.getItem("lastActiveSection") || "beranda";
@@ -33,27 +420,19 @@ const Dashboard = () => {
   const [currentContent, setCurrentContent] = useState(null);
   const [contentLoaded, setContentLoaded] = useState(false);
   const [logoError, setLogoError] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  // Simpan activeSection ke localStorage
   useEffect(() => {
     localStorage.setItem("lastActiveSection", activeSection);
   }, [activeSection]);
 
-  // SCROLL KE ATAS SETIAP BERPINDAH SECTION
   useEffect(() => {
-    // Scroll ke atas ketika section berubah
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
-    
-    // Juga scroll container main content ke atas (jika ada)
+    window.scrollTo(0, 0);
     const mainContent = document.querySelector('.main-content');
     if (mainContent) {
       mainContent.scrollTop = 0;
     }
-  }, [activeSection]); // Trigger ketika activeSection berubah
+  }, [activeSection]);
 
   useEffect(() => {
     const savedUserType = localStorage.getItem("userType") || "guest";
@@ -63,7 +442,6 @@ const Dashboard = () => {
       const mobile = window.innerWidth <= 768;
       setIsMobile(mobile);
 
-      // Jika berpindah dari mobile ke desktop, tutup sidebar
       if (!mobile && sidebarOpen) {
         setSidebarOpen(false);
       }
@@ -72,7 +450,6 @@ const Dashboard = () => {
     checkScreenSize();
     window.addEventListener("resize", checkScreenSize);
 
-    // Event listener untuk navigasi dari konten lain
     const handleNavigateTo = (event) => {
       setActiveSection(event.detail);
     };
@@ -85,22 +462,18 @@ const Dashboard = () => {
     };
   }, [sidebarOpen]);
 
-  // Load content berdasarkan activeSection
   useEffect(() => {
     if (activeSection && contentLoaded) {
       loadContent(activeSection);
     }
   }, [activeSection, contentLoaded]);
 
-  // Load script konten dinamis
   useEffect(() => {
     loadContentScripts();
   }, []);
 
-  // Set openSubmenu berdasarkan activeSection saat pertama kali load
   useEffect(() => {
     if (!isMobile) {
-      // Cek apakah activeSection adalah bagian dari submenu
       const submenuMapping = {
         'visi-misi': 'profile',
         'sarana-prasana': 'profile', 
@@ -125,6 +498,16 @@ const Dashboard = () => {
     }
   }, [isMobile, activeSection]);
 
+  useEffect(() => {
+  const handleScroll = () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    setIsScrolled(scrollTop > 10);
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+
   const loadContentScripts = () => {
     const scripts = [
       "js/contents/anbk.js",
@@ -147,7 +530,6 @@ const Dashboard = () => {
 
     let loadedCount = 0;
 
-    // Jika tidak ada script yang perlu dimuat
     if (scripts.length === 0) {
       setContentLoaded(true);
       return;
@@ -179,115 +561,93 @@ const Dashboard = () => {
   const registerContentComponents = () => {
     console.log("Mendaftarkan komponen konten...");
 
-    // Registrasi komponen ANBK
     if (window.ANBKContent) {
       contentRegistry.anbk = React.createElement(window.ANBKContent);
       console.log("✓ ANBK content registered");
     }
 
-    // Registrasi komponen beranda
     if (window.BerandaContent) {
       contentRegistry.beranda = React.createElement(window.BerandaContent);
       console.log("✓ Beranda content registered");
     }
 
-    // Registrasi komponen berita
     if (window.BeritaContent) {
       contentRegistry.berita = React.createElement(window.BeritaContent);
       console.log("✓ Berita content registered");
     }
 
-    // Registrasi komponen ekstrakulikuler
     if (window.EkstrakulikulerContent) {
-      contentRegistry.ekstrakulikuler = React.createElement(
-        window.EkstrakulikulerContent
-      );
+      contentRegistry.ekstrakulikuler = React.createElement(window.EkstrakulikulerContent);
       console.log("✓ Ekstrakulikuler content registered");
     }
 
-    // Registrasi komponen galeri (dari foto.js)
     if (window.GaleriContent) {
       contentRegistry.galeri = React.createElement(window.GaleriContent);
       console.log("✓ Galeri content registered");
     }
 
-    // Registrasi komponen guru-staf
     if (window.GuruStafContent) {
       contentRegistry.guruStaf = React.createElement(window.GuruStafContent);
       console.log("✓ GuruStaf content registered");
     }
 
-    // Registrasi komponen hubungi-kami
     if (window.HubungiKamiContent) {
-      contentRegistry.hubungiKami = React.createElement(
-        window.HubungiKamiContent
-      );
+      contentRegistry.hubungiKami = React.createElement(window.HubungiKamiContent);
       console.log("✓ HubungiKami content registered");
     }
 
-    // Registrasi komponen kelas
     if (window.KelasContent) {
       contentRegistry.kelas = React.createElement(window.KelasContent);
+      console.log("✓ Kelas content registered");
     }
 
-    // Registrasi komponen lomba
     if (window.LombaContent) {
       contentRegistry.lomba = React.createElement(window.LombaContent);
+      console.log("✓ Lomba content registered");
     }
 
-    // Registrasi komponen mpls
     if (window.MPLSContent) {
       contentRegistry.mpls = React.createElement(window.MPLSContent);
+      console.log("✓ MPLS content registered");
     }
 
-    // Registrasi komponen pembelajaran
     if (window.PembelajaranContent) {
-      contentRegistry.pembelajaran = React.createElement(
-        window.PembelajaranContent
-      );
+      contentRegistry.pembelajaran = React.createElement(window.PembelajaranContent);
+      console.log("✓ Pembelajaran content registered");
     }
 
-    // Registrasi komponen pengaduan
     if (window.PengaduanContent) {
       contentRegistry.pengaduan = React.createElement(window.PengaduanContent);
+      console.log("✓ Pengaduan content registered");
     }
 
-    // Registrasi komponen ppdb
     if (window.PPDBContent) {
       contentRegistry.ppdb = React.createElement(window.PPDBContent);
+      console.log("✓ PPDB content registered");
     }
 
-    // Registrasi komponen prestasi
     if (window.PrestasiContent) {
       contentRegistry.prestasi = React.createElement(window.PrestasiContent);
+      console.log("✓ Prestasi content registered");
     }
 
-    // Registrasi komponen sarana-prasana
     if (window.SaranaPrasanaContent) {
-      contentRegistry.saranaPrasana = React.createElement(
-        window.SaranaPrasanaContent
-      );
+      contentRegistry.saranaPrasana = React.createElement(window.SaranaPrasanaContent);
+      console.log("✓ SaranaPrasana content registered");
     }
 
-    // Registrasi komponen visi-misi
     if (window.VisiMisiContent) {
       contentRegistry.visiMisi = React.createElement(window.VisiMisiContent);
       console.log("✓ VisiMisi content registered");
     }
 
-    console.log(
-      "Registrasi selesai. Keys yang tersedia:",
-      Object.keys(contentRegistry)
-    );
-
-    // Set content awal setelah registrasi
+    console.log("Registrasi selesai. Keys yang tersedia:", Object.keys(contentRegistry));
     loadContent(activeSection);
   };
 
   const loadContent = (section) => {
     console.log("Loading content for:", section);
 
-    // Mapping antara ID menu dan key di registry
     const sectionMapping = {
       beranda: "beranda",
       berita: "berita",
@@ -312,18 +672,14 @@ const Dashboard = () => {
 
     console.log("Mencari di registry dengan key:", registryKey);
 
-    // Cek di registry dulu
     if (contentRegistry[registryKey]) {
       console.log("✓ Konten ditemukan di registry");
       setCurrentContent(contentRegistry[registryKey]);
       return;
     }
 
-    // Jika tidak ada di registry, gunakan default
     console.log("✗ Konten tidak ditemukan, menggunakan default");
-    setCurrentContent(
-      React.createElement(contentRegistry.default, { section })
-    );
+    setCurrentContent(React.createElement(contentRegistry.default, { section }));
   };
 
   const toggleSidebar = () => {
@@ -359,7 +715,6 @@ const Dashboard = () => {
     window.location.href = "login.html";
   };
 
-  // Handler untuk navigasi ke section
   const handleNavigation = (sectionId) => {
     setActiveSection(sectionId);
     if (isMobile) {
@@ -367,36 +722,15 @@ const Dashboard = () => {
     }
   };
 
-  // Menu items - galeri sekarang menjadi menu biasa
   const menuItems = [
     { id: "beranda", label: "BERANDA" },
     { id: "profil", label: "PROFIL", hasSubmenu: true, submenuType: "profile" },
-    {
-      id: "akademik",
-      label: "AKADEMIK",
-      hasSubmenu: true,
-      submenuType: "akademik",
-    },
-    {
-      id: "kegiatan",
-      label: "KEGIATAN",
-      hasSubmenu: true,
-      submenuType: "kegiatan",
-    },
+    { id: "akademik", label: "AKADEMIK", hasSubmenu: true, submenuType: "akademik" },
+    { id: "kegiatan", label: "KEGIATAN", hasSubmenu: true, submenuType: "kegiatan" },
     { id: "galeri", label: "GALERI" },
-    {
-      id: "informasi",
-      label: "INFORMASI",
-      hasSubmenu: true,
-      submenuType: "informasi",
-    },
+    { id: "informasi", label: "INFORMASI", hasSubmenu: true, submenuType: "informasi" },
     { id: "kontak", label: "KONTAK", hasSubmenu: true, submenuType: "kontak" },
-    {
-      id: "account",
-      label: "ACCOUNT",
-      hasSubmenu: true,
-      submenuType: "account",
-    },
+    { id: "account", label: "ACCOUNT", hasSubmenu: true, submenuType: "account" },
   ];
 
   const getSubmenuItems = (submenuType) => {
@@ -443,7 +777,6 @@ const Dashboard = () => {
 
   const handleSubmenuClick = (submenuType, itemId) => {
     if (itemId === "lokasi") {
-      handleNavigateToMaps();
       return;
     }
 
@@ -464,7 +797,6 @@ const Dashboard = () => {
     return openSubmenu === submenuType;
   };
 
-  // Fungsi untuk render menu item
   const renderMenuItem = (item) => {
     const isActive = activeSection === item.id;
     const hasSubmenuOpen = item.hasSubmenu && isSubmenuOpen(item.submenuType);
@@ -475,9 +807,7 @@ const Dashboard = () => {
       React.createElement(
         "li",
         {
-          className: `nav-item ${isActive ? "active" : ""} ${
-            hasSubmenuOpen ? "submenu-open" : ""
-          }`,
+          className: `nav-item ${isActive ? "active" : ""} ${hasSubmenuOpen ? "submenu-open" : ""}`,
           onClick: () => {
             if (item.hasSubmenu) {
               toggleSubmenu(item.submenuType);
@@ -497,7 +827,6 @@ const Dashboard = () => {
             hasSubmenuOpen ? "▲" : "▼"
           )
       ),
-      // SUBMENU (hanya untuk item yang punya submenu)
       item.hasSubmenu &&
         hasSubmenuOpen &&
         React.createElement(
@@ -509,9 +838,7 @@ const Dashboard = () => {
               "li",
               {
                 key: subItem.id,
-                className: `nav-item submenu-item ${
-                  isSubItemActive ? "active" : ""
-                } ${subItem.id === "keluar" ? "danger-item" : ""}`,
+                className: `nav-item submenu-item ${isSubItemActive ? "active" : ""} ${subItem.id === "keluar" ? "danger-item" : ""}`,
                 onClick: () => handleSubmenuClick(item.submenuType, subItem.id),
               },
               subItem.label
@@ -521,16 +848,13 @@ const Dashboard = () => {
     );
   };
 
-  // Handler untuk error gambar logo
   const handleLogoError = () => {
     console.error("Gambar logo tidak dapat dimuat");
     setLogoError(true);
   };
 
-  // Komponen untuk logo/gambar sekolah dengan teks di samping
   const SchoolLogo = () => {
     if (logoError) {
-      // Fallback ke teks jika gambar error
       return React.createElement(
         "div",
         {
@@ -622,24 +946,14 @@ const Dashboard = () => {
 
   return React.createElement(
     "div",
-    { className: "dashboard" },
-    /* DESKTOP SIDEBAR - MENGGUNAKAN FIXED POSITION */
+    { className: "dashboard-with-footer" },
+    
+    /* DESKTOP SIDEBAR */
     !isMobile &&
       React.createElement(
         "aside",
-        {
-          className: "sidebar",
-          style: {
-            position: "fixed",
-            top: 0,
-            left: 0,
-            height: "100vh",
-            overflowY: "auto",
-            zIndex: 1000,
-          },
-        },
+        { className: "sidebar" },
         React.createElement(SchoolLogo),
-
         React.createElement(
           "div",
           { className: "sidebar-section" },
@@ -658,13 +972,11 @@ const Dashboard = () => {
         onClick: closeSidebar,
       }),
 
-    /* MOBILE SIDEBAR - TETAP NORMAL (NON-FIXED) */
+    /* MOBILE SIDEBAR */
     isMobile &&
       React.createElement(
         "aside",
-        {
-          className: `mobile-sidebar ${sidebarOpen ? "open" : ""}`,
-        },
+        { className: `mobile-sidebar ${sidebarOpen ? "open" : ""}` },
         React.createElement(
           "div",
           { className: "mobile-sidebar-header" },
@@ -674,21 +986,10 @@ const Dashboard = () => {
             {
               className: "close-sidebar",
               onClick: closeSidebar,
-              style: {
-                position: "absolute",
-                top: "50px",
-                right: "10px",
-                background: "none",
-                border: "none",
-                fontSize: "1.5rem",
-                cursor: "pointer",
-                color: "#ffffffff",
-              },
             },
             "×"
           )
         ),
-
         React.createElement(
           "div",
           { className: "sidebar-section" },
@@ -700,77 +1001,193 @@ const Dashboard = () => {
         )
       ),
 
-    /* MAIN CONTENT */
+    /* WRAPPER UNTUK KONTEN + FOOTER */
     React.createElement(
-      "main",
+      "div",
+      { className: "main-content-wrapper" },
+      /* MAIN CONTENT */
+      React.createElement(
+        "main",
+        { className: "main-content" },
+        isMobile &&
+  React.createElement(
+    "div",
+    { 
+      className: "mobile-header",
+      style: {
+        backgroundColor: isScrolled ? "white" : "transparent",
+        boxShadow: isScrolled ? "0 2px 5px rgba(0,0,0,0.1)" : "none"
+      }
+    },
+    React.createElement(
+      "button",
       {
-        className: "main-content",
-        style: !isMobile
-          ? {
-              marginLeft: "280px",
-              width: "calc(100% - 280px)",
-            }
-          : {},
+        className: "menu-toggle",
+        onClick: toggleSidebar,
+        style: {
+          fontSize: "24px",
+          color: "white", // Selalu putih
+          cursor: "pointer",
+          height: "40px",
+          width: "40px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          lineHeight: "1",
+          userSelect: "none",
+          WebkitTapHighlightColor: "transparent",
+          backgroundColor: "#2a5298",
+          borderRadius: "4px",
+          transition: "all 0.3s ease",
+          margin: "8px 8px 8px 25px",
+          border: "none",
+          padding: "0",
+          fontWeight: "bold"
+        }
       },
-      isMobile &&
-        React.createElement(
-          "div",
-          {
-            className: "mobile-header",
-            style: {
-              display: "flex",
-              alignItems: "center",
-              padding: "0",
-              borderBottom: "none",
-              position: "static",
-              backgroundColor: "transparent",
-              boxShadow: "none",
-              zIndex: 100,
-              width: "100%",
-              marginBottom: "10px",
-            },
-          },
-          React.createElement(
-            "button",
-            {
-              className: "menu-toggle",
-              onClick: toggleSidebar,
-              style: {
-                fontSize: "1.5rem",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                padding: "10px",
-                color: "#333",
-              },
-            },
-            "☰"
-          ),
+      "☰"
+    ),
+    React.createElement("div", { style: { flex: 1 } })
+  ),
 
-          // Div kosong untuk memastikan tombol tetap di kiri
-          React.createElement("div", { style: { flex: 1 } })
-        ),
-
-      // RENDER CONTENT DINAMIS
-      !contentLoaded
-        ? React.createElement(
-            "div",
-            { className: "loading-container" },
-            React.createElement("div", { className: "loading-spinner" }),
-            React.createElement("p", null, "Memuat konten...")
-          )
-        : currentContent ||
-            React.createElement(contentRegistry.default, {
-              section: activeSection,
-            })
+        // RENDER CONTENT DINAMIS
+        !contentLoaded
+          ? React.createElement(
+                "div",
+                { className: "loading-container" },
+                React.createElement("div", { className: "loading-spinner" }),
+                React.createElement("p", null, "Memuat konten...")
+              )
+          : currentContent ||
+                React.createElement(contentRegistry.default, {
+                  section: activeSection,
+                })
+      ),
+      
+      /* FOOTER - DITEMPATKAN DI LUAR UNTUK LEBAR PENUH */
+      React.createElement(Footer)
     )
   );
 };
 
-// Export registry agar bisa diakses oleh file lain
+// Tambahkan di ATAS window.contentRegistry
+const WhatsAppFloatingButton = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
+  return React.createElement(
+    "button",
+    {
+      title: "Hubungi WhatsApp",
+      style: {
+        position: "fixed",
+        bottom: "20px",
+        right: "20px",
+        background: "#25D366",
+        color: "white",
+        border: "none",
+        borderRadius: isMobile ? "50%" : "50px",
+        cursor: "pointer",
+        zIndex: "10000",
+        boxShadow: "0 4px 12px rgba(37, 211, 102, 0.4)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: isMobile ? "0" : "10px",
+        padding: isMobile ? "0" : "0 25px 0 20px",
+        height: isMobile ? "56px" : "60px",
+        width: isMobile ? "56px" : "auto",
+        transition: "all 0.3s ease",
+        transform: "scale(1)",
+        whiteSpace: "nowrap",
+        minWidth: isMobile ? "56px" : "60px",
+        overflow: "hidden"
+      },
+      onMouseEnter: (e) => {
+        if (!isMobile) {
+          e.target.style.transform = "scale(1.05)";
+          e.target.style.boxShadow = "0 6px 20px rgba(37, 211, 102, 0.6)";
+          e.target.style.background = "#128C7E";
+        }
+      },
+      onMouseLeave: (e) => {
+        if (!isMobile) {
+          e.target.style.transform = "scale(1)";
+          e.target.style.boxShadow = "0 4px 12px rgba(37, 211, 102, 0.4)";
+          e.target.style.background = "#25D366";
+        }
+      },
+      onMouseDown: (e) => {
+        e.target.style.transform = "scale(0.95)";
+      },
+      onMouseUp: (e) => {
+        e.target.style.transform = isMobile ? "scale(1)" : "scale(1.05)";
+      },
+      onClick: () => {
+        const phoneNumber = "6281325763067";
+        const message = "";
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+      }
+    },
+    // Icon WhatsApp dari Font Awesome
+    React.createElement(
+      "i",
+      {
+        className: "fab fa-whatsapp",
+        style: {
+          fontSize: isMobile ? "1.6rem" : "1.8rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+          height: "100%"
+        }
+      }
+    ),
+    // Text "Kirim Pesan" - hanya tampil di desktop
+    !isMobile && React.createElement(
+      "span",
+      {
+        className: "whatsapp-text",
+        style: {
+          fontSize: "1rem",
+          fontWeight: "600",
+          letterSpacing: "0.3px"
+        }
+      },
+      "Kirim Pesan"
+    )
+  );
+};
+
 window.contentRegistry = contentRegistry;
 
 ReactDOM.render(
-  React.createElement(Dashboard),
+  React.createElement(
+    "div",
+    null,
+    React.createElement(Dashboard),
+    React.createElement(WhatsAppFloatingButton)
+  ),
+  document.getElementById("root")
+);
+
+window.contentRegistry = contentRegistry;
+
+ReactDOM.render(
+  React.createElement(DashboardWithWhatsApp),
   document.getElementById("root")
 );

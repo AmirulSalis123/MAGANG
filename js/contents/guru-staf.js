@@ -26,7 +26,6 @@ const GuruStafContent = () => {
             { id: 'guru_mapel', name: 'Guru Mapel', icon: 'fas fa-book', count: 4 },
             { id: 'staf_tu', name: 'Staf TU', icon: 'fas fa-user-cog', count: 1 },
             { id: 'keamanan', name: 'Keamanan', icon: 'fas fa-shield-alt', count: 1 },
-            { id: 'lab_komputer', name: 'Lab Komputer', icon: 'fas fa-laptop', count: 1 },
         ],
 
         staff: [
@@ -939,7 +938,7 @@ const GuruStafContent = () => {
                 textAlign: 'center',
                 marginBottom: isMobile ? '30px' : '50px',
                 padding: isMobile ? '25px 20px' : '40px',
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                background: 'linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)',
                 borderRadius: '12px',
                 color: 'white',
                 position: 'relative',

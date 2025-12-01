@@ -297,7 +297,7 @@ const SaranaPrasanaContent = () => {
                 textAlign: 'center',
                 marginBottom: isMobile ? '30px' : '50px',
                 padding: isMobile ? '25px 20px' : '40px',
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                background: 'linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)',
                 borderRadius: '12px',
                 color: 'white',
                 position: 'relative',
